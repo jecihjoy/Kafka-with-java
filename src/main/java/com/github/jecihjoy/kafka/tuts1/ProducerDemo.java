@@ -11,7 +11,7 @@ import org.apache.kafka.common.serialization.StringSerializer;
 public class ProducerDemo {
 
     public static void main(String[] args) {
-        String bootstrapServers = "10.50.201.30:9092";
+        String bootstrapServers = "10.50.201.25:9092";
         //create producer properties
         Properties prop = new Properties();
         prop.setProperty(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServers);
@@ -26,5 +26,9 @@ public class ProducerDemo {
 
         //send data
         producer.send(record);
+
+        producer.flush();
+
+        producer.close();
     }
 }
