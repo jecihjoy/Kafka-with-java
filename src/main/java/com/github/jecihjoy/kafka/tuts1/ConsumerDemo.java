@@ -36,4 +36,3 @@ public class ConsumerDemo {
         }
     }
 }
-//touch ~/vms/apps/Vagrantfile
