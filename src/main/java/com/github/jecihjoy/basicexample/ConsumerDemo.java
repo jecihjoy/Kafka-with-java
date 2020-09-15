@@ -1,4 +1,4 @@
-package com.github.jecihjoy.kafka.tuts1;
+package com.github.jecihjoy.basicexample;
 
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
