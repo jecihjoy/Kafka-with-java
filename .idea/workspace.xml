@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9991352e-545c-455f-aff0-6d81cf6cbfe1" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/jecihjoy/basicexample/ConsumerDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/jecihjoy/basicexample/KafkaConsumerDemo.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,6 +75,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="KafkaConsumerDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.github.jecihjoy.basicexample.KafkaConsumerDemo" />
+      <module name="Kafka-with-java" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.github.jecihjoy.basicexample.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="KafkaProducerDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.github.jecihjoy.basicexample.KafkaProducerDemo" />
       <module name="Kafka-with-java" />
@@ -116,6 +130,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.KafkaProducerWithKeys" />
+        <item itemvalue="Application.KafkaConsumerDemo" />
         <item itemvalue="Application.KafkaProducerDemo" />
         <item itemvalue="Application.ProducerDemo" />
         <item itemvalue="Application.ConsumerDemo" />
@@ -156,32 +171,32 @@
       <screen x="1440" y="0" width="1920" height="1080" />
     </state>
     <state x="2250" y="436" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1440.900/1440.0.1920.1080@1440.0.1920.1080" timestamp="1600076000528" />
-    <state width="1398" height="193" key="GridCell.Tab.0.bottom" timestamp="1600171071850">
+    <state width="1398" height="311" key="GridCell.Tab.0.bottom" timestamp="1600182965475">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state width="1878" height="295" key="GridCell.Tab.0.bottom/0.0.1440.900/1440.0.1920.1080@1440.0.1920.1080" timestamp="1600084272644" />
-    <state width="1398" height="193" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1600171071850" />
+    <state width="1398" height="311" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1600182965475" />
     <state width="1878" height="295" key="GridCell.Tab.0.bottom/0.23.1440.877/1440.0.1920.1080@1440.0.1920.1080" timestamp="1600084588377" />
     <state width="1398" height="429" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1600166345517" />
-    <state width="1398" height="193" key="GridCell.Tab.0.center" timestamp="1600171071849">
+    <state width="1398" height="311" key="GridCell.Tab.0.center" timestamp="1600182965473">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state width="1878" height="295" key="GridCell.Tab.0.center/0.0.1440.900/1440.0.1920.1080@1440.0.1920.1080" timestamp="1600084272642" />
-    <state width="1398" height="193" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1600171071849" />
+    <state width="1398" height="311" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1600182965473" />
     <state width="1878" height="295" key="GridCell.Tab.0.center/0.23.1440.877/1440.0.1920.1080@1440.0.1920.1080" timestamp="1600084588375" />
     <state width="1398" height="429" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1600166345515" />
-    <state width="1398" height="193" key="GridCell.Tab.0.left" timestamp="1600171071848">
+    <state width="1398" height="311" key="GridCell.Tab.0.left" timestamp="1600182965471">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state width="1878" height="295" key="GridCell.Tab.0.left/0.0.1440.900/1440.0.1920.1080@1440.0.1920.1080" timestamp="1600084272641" />
-    <state width="1398" height="193" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1600171071848" />
+    <state width="1398" height="311" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1600182965471" />
     <state width="1878" height="295" key="GridCell.Tab.0.left/0.23.1440.877/1440.0.1920.1080@1440.0.1920.1080" timestamp="1600084588375" />
     <state width="1398" height="429" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1600166345514" />
-    <state width="1398" height="193" key="GridCell.Tab.0.right" timestamp="1600171071849">
+    <state width="1398" height="311" key="GridCell.Tab.0.right" timestamp="1600182965474">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state width="1878" height="295" key="GridCell.Tab.0.right/0.0.1440.900/1440.0.1920.1080@1440.0.1920.1080" timestamp="1600084272643" />
-    <state width="1398" height="193" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1600171071849" />
+    <state width="1398" height="311" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1600182965474" />
     <state width="1878" height="295" key="GridCell.Tab.0.right/0.23.1440.877/1440.0.1920.1080@1440.0.1920.1080" timestamp="1600084588376" />
     <state width="1398" height="429" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1600166345517" />
   </component>
