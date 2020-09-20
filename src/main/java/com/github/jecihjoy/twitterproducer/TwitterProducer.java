@@ -14,10 +14,17 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import java.util.List;
+import java.util.Properties;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.TimeUnit;
 import com.github.jecihjoy.util.TwitterConfigs;
+import org.apache.kafka.clients.producer.Callback;
+import org.apache.kafka.clients.producer.KafkaProducer;
+import org.apache.kafka.clients.producer.ProducerConfig;
+import org.apache.kafka.clients.producer.ProducerRecord;
+import org.apache.kafka.clients.producer.RecordMetadata;
+import org.apache.kafka.common.serialization.StringSerializer;
 
 public class TwitterProducer {
     Log log = LogFactory.getLog(TwitterProducer.class);
@@ -30,20 +37,43 @@ public class TwitterProducer {
     }
 
     public void run() {
-        /** Set up your blocking queues: Be sure to size these properly based on expected TPS of your stream */
+        /**blocking queues: Be sure to size these properly based on expected TPS (Transaction per second) of your stream */
         BlockingQueue<String> msgQueue = new LinkedBlockingQueue<>(100000);
 
         /**create a twitter client*/
         Client client = createTwitterClient(msgQueue);
         client.connect();
 
-        //create a kafka producer
+        /**create a kafka producer*/
+        KafkaProducer<String, String>  kafkaProducer = createKafkaProducer();
+
+        /**Add shutdown hook*/
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+            log.info("SHUTTING DOWN APPLICATION...");
+            client.stop();
+            log.info("Closing producer");
+            kafkaProducer.close();
+        }));
 
         //loop to send tweets to kafka
         while (!client.isDone()) {
             String msg = "";
             try {
                 msg = msgQueue.poll(5, TimeUnit.SECONDS);
+                kafkaProducer.send(new ProducerRecord<>("tweets", null, msg), new Callback() {
+                    @Override
+                    public void onCompletion(RecordMetadata recordMetadata, Exception e) {
+                        if (e == null) {
+                            log.info("Received new metadata. \n" +
+                                    "Topic:" + recordMetadata.topic() + "\n" +
+                                    "Partition: " + recordMetadata.partition() + "\n" +
+                                    "Offset: " + recordMetadata.offset() + "\n" +
+                                    "Timestamp: " + recordMetadata.timestamp());
+                        } else {
+                            log.error("Error while producing", e);
+                        }
+                    }
+                });
             } catch (InterruptedException e) {
                 e.printStackTrace();
                 client.stop();
@@ -79,4 +109,26 @@ public class TwitterProducer {
 
         return  builder.build(); //the hosebirdClient
     }
+
+    public KafkaProducer<String, String> createKafkaProducer() {
+        String bootstrapServers = "127.0.0.1:9092";
+
+        //create producer properties
+        Properties prop = new Properties();
+        prop.setProperty(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServers);
+        prop.setProperty(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
+        prop.setProperty(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
+
+        //create producer
+        KafkaProducer<String, String> producer = new KafkaProducer<String, String>(prop);
+        return producer;
+    }
+
+
+    /**
+     * creating tweets topic
+     * kafka-topics --zookeeper 127.0.0.1:2181 --create --topic tweets --partitions 6 --replication-factor 1
+     * consuming tweets
+     * kafka-console-consumer --bootstrap-server 127.0.0.1:9092 --topic tweets --group tweets-group
+     */
 }
